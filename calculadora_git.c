@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<math.h>
 //funciones arreglos
 void leer_arreglo(int num[]);
 int sumar_arreglo(int num[]);
@@ -10,6 +11,8 @@ double division(int a, int b);
 int factorial(int a);
 int factorial_rec(int a);
 double euler(int a);
+
+void eq_cuadr(double a, double b, double c, double *r1,double *r2);
 //main
 int main (void)
 {
@@ -17,6 +20,7 @@ int main (void)
   int num1,num2;
   char c;
   double db;
+  double v1,v2,v3,res1,res2;
   int numeros_caso_a[10];
   int res = 0;
 //Procesos
@@ -24,7 +28,7 @@ int main (void)
   printf("\t\t| + (SUMA )     -  (RESTA) |\n");
   printf("\t\t| * (MULTi)     /  (DIVIS) |\n");
   printf("\t\t| f (facto)     F  (FACTO) |\n");
-  printf("\t\t| e (EULER)                |\n");
+  printf("\t\t| e (EULER)     c  (e.cud) |\n");
   printf("\t\t****************************\n");
   printf("¿Que tipo de operación quieres hacer?\n ");
   scanf("%c", &c);
@@ -101,6 +105,26 @@ int main (void)
         printf("Tu respuesta para %c:   %d", c, res);
       }
 
+      case 'c':
+      {
+            printf("\nEc. Cuadratica");
+            printf("\nIngresa los valores: [a,b,c]\n");
+            scanf("%lf,%lf,%lf",&v1,&v2,&v3);
+	    eq_cuadr(v1,v2,v3,&res1,&res2);
+	    if(res1>0 && res2>0){
+	      printf("Tu respuestas para %c:   %lf, %lf", c, res1, res2);
+	    }
+	    else if(res1>0 && (res2 !=0 || res2<0)){
+	      printf("\nPara %c\nSolo tienes una respuesta disponible: %lf", c, res1);
+	    }
+	    else if(res2>0 && (res1 !=0 || res1<0)){
+	      printf("\nPara %c\nSolo tienes una respuesta disponible: %lf", c, res2);
+	    }
+	    else if(res1 !=0 && res2 !=0){
+	      printf("No hay respuestas disponibles");
+	    }
+      }
+
     }
 
 //FIN DEL PROGRAMA
@@ -163,7 +187,10 @@ double euler(int a){
   return eu;
 }
 
-
+void eq_cuadr(double a, double b, double c, double *r1,double *r2){
+  *r1=(-b+sqrt(b*b-4*a*c))/(2*a);
+  *r2=(-b-sqrt(b*b-4*a*c))/(2*a);
+}
 
 //funciones arreglos
 void leer_arreglo(int num[])
