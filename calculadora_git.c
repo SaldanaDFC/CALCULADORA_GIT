@@ -14,6 +14,7 @@ double euler(int a);
 void eq_cuadr(double a, double b, double c, double *r1,double *r2);
 int serie_fib(int val_final);
 void triangulo_fib(int tam);
+double serieLebniz(int n);
 //main
 int main (void)
 {
@@ -21,6 +22,7 @@ int main (void)
   int num1,num2;
   char c;
   double db;
+  double pi;
   double v1,v2,v3,res1,res2;
   int numeros_caso_a[10];
   int res = 0;
@@ -131,6 +133,12 @@ int main (void)
            }while(num1<0);
 	   triangulo_fib(num1);
       }
+  case 'p':{
+           printf("Ingresa un numero: ");
+           scanf("%i",&num1);
+           pi=serieLebniz(num1);
+           printf("\n%lf\n",pi);
+  }
     
     }
 
@@ -231,6 +239,26 @@ int serie_fib(int val_final){
      }
     if(i==1) return i;
     else return f;
+}
+double serieLebniz(int n){
+  int i;
+  double res, nump;
+  nump=1;
+  res=0;
+  int change=1;
+  for(i=1;i<=n;i++){
+    if(change==1){
+      res=res+(1/nump);
+      change=2;
+    }
+    else if(change==2){
+      res=res-(1/nump);
+      change=1;
+    }
+    nump+=2;
+    
+  }
+  return res*4;
 }
 //******************
 //******************
