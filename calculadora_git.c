@@ -11,8 +11,9 @@ double division(int a, int b);
 int factorial(int a);
 int factorial_rec(int a);
 double euler(int a);
-
 void eq_cuadr(double a, double b, double c, double *r1,double *r2);
+int serie_fib(int val_final);
+void triangulo_fib(int tam);
 //main
 int main (void)
 {
@@ -29,6 +30,7 @@ int main (void)
   printf("\t\t| * (MULTi)     /  (DIVIS) |\n");
   printf("\t\t| f (facto)     F  (FACTO) |\n");
   printf("\t\t| e (EULER)     c  (e.cud) |\n");
+  printf("\t\t| i (fibonacci) p (leibiz) |\n");
   printf("\t\t****************************\n");
   printf("¿Que tipo de operación quieres hacer?\n ");
   scanf("%c", &c);
@@ -96,18 +98,15 @@ int main (void)
             break;
       }
 	
-      case 'a':
-      {
-        leer_arreglo(numeros_caso_a);
-        printf("\n");
-        res = sumar_arreglo(numeros_caso_a);
-
-        printf("Tu respuesta para %c:   %d", c, res);
+      case 'a': {
+            leer_arreglo(numeros_caso_a);
+            printf("\n");
+            res = sumar_arreglo(numeros_caso_a);
+            printf("Tu respuesta para %c:   %d", c, res);
       }
 
-      case 'c':
-      {
-            printf("\nEc. Cuadratica");
+      case 'c':{
+	    printf("\nEc. Cuadratica");
             printf("\nIngresa los valores: [a,b,c]\n");
             scanf("%lf,%lf,%lf",&v1,&v2,&v3);
 	    eq_cuadr(v1,v2,v3,&res1,&res2);
@@ -124,7 +123,15 @@ int main (void)
 	      printf("No hay respuestas disponibles");
 	    }
       }
-
+      case 'i': {
+	   do{
+           printf("INGRESA UN NUMERO: ");
+           scanf("%i",&num1);
+           if(num1<0){printf("EL VALOR INGRESADO NO ES VALIDO.");}
+           }while(num1<0);
+	   triangulo_fib(num1);
+      }
+    
     }
 
 //FIN DEL PROGRAMA
@@ -132,7 +139,11 @@ int main (void)
   printf("\n\n\tPrograma Finalizado con ÉXTO\n\n");
   return 0;
 }
+//******************
+//******************
 //funciones
+//******************
+//******************
 int suma(int a, int b){
   int s;
   s=a+b;
@@ -192,7 +203,40 @@ void eq_cuadr(double a, double b, double c, double *r1,double *r2){
   *r2=(-b-sqrt(b*b-4*a*c))/(2*a);
 }
 
+void triangulo_fib(int tam){
+ int i, j;
+ int fib;
+ printf("Triangulo serie de fibonacci\n");
+ fib=serie_fib(tam);
+ for(i=-1;i<tam;i++){
+     printf("\n");
+     for(j=0; j<=i+1;j++){
+	printf("%i",serie_fib(j));
+     }
+ }
+printf("\nEl numero en f(%i) es %i\n",tam, fib);
+}
+int serie_fib(int val_final){
+    int i, j;
+    int f=0;
+    int f2=0;
+    int f1=0;
+    for(i=0;i<val_final;i++){
+      if(i==1){
+	f=1;
+      }
+      f1=f;
+      f=f1+f2;			       
+      f2=f1;
+     }
+    if(i==1) return i;
+    else return f;
+}
+//******************
+//******************
 //funciones arreglos
+//******************
+//******************
 void leer_arreglo(int num[])
 {
     int i;
