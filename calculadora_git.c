@@ -15,11 +15,15 @@ void eq_cuadr(double a, double b, double c, double *r1,double *r2);
 int serie_fib(int val_final);
 void triangulo_fib(int tam);
 double serieLebniz(int n);
+void circulo_esfera(double r, double *peri, double*area, double *vol);
 //main
 int main (void)
 {
 //Variables
   int num1,num2;
+  double radio;
+  double *per,*are,*volumen;
+  double perimetro=0, area=0, volum=0;
   char c;
   double db;
   double pi;
@@ -33,6 +37,7 @@ int main (void)
   printf("\t\t| f (facto)     F  (FACTO) |\n");
   printf("\t\t| e (EULER)     c  (e.cud) |\n");
   printf("\t\t| i (fibonacci) p (leibiz) |\n");
+  printf("\t\t| v (pe,ar,vol)            |\n");
   printf("\t\t****************************\n");
   printf("¿Que tipo de operación quieres hacer?\n ");
   scanf("%c", &c);
@@ -105,6 +110,7 @@ int main (void)
             printf("\n");
             res = sumar_arreglo(numeros_caso_a);
             printf("Tu respuesta para %c:   %d", c, res);
+	    break;
       }
 
       case 'c':{
@@ -124,6 +130,7 @@ int main (void)
 	    else if(res1 !=0 && res2 !=0){
 	      printf("No hay respuestas disponibles");
 	    }
+	    break;
       }
       case 'i': {
 	   do{
@@ -132,15 +139,29 @@ int main (void)
            if(num1<0){printf("EL VALOR INGRESADO NO ES VALIDO.");}
            }while(num1<0);
 	   triangulo_fib(num1);
+	   break;
       }
   case 'p':{
            printf("Ingresa un numero: ");
            scanf("%i",&num1);
            pi=serieLebniz(num1);
            printf("\n%lf\n",pi);
+	   break;
   }
-    
+  case'v':{
+           printf("Ingresa el radio: ");
+	   scanf("%lf",&radio);
+	   per=&perimetro;
+	   are=&area;
+	   volumen=&volum;
+	   circulo_esfera(radio,per,are,volumen);
+	   printf("\nRadio     = %lf",radio);
+	   printf("\nPerimetro = %lf",*per);
+	   printf("\nArea      = %lf",*are);
+	   printf("\nVolumen   = %lf",*volumen);
+	   break;
     }
+  }
 
 //FIN DEL PROGRAMA
   
@@ -259,6 +280,15 @@ double serieLebniz(int n){
     
   }
   return res*4;
+}
+void circulo_esfera(double r, double *peri, double*area, double *vol){
+  double pi;
+  printf("Ingresa un valor: ");
+  scanf("%lf",&pi);
+  pi=serieLebniz(pi);
+  *peri=2*pi*r;
+  *area=pi*(r*r);
+  *vol=(4/3)*(pi)*(r*r*r);
 }
 //******************
 //******************
