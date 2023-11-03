@@ -37,7 +37,7 @@ int main (void)
   printf("\t\t| f (facto)     F  (FACTO) |\n");
   printf("\t\t| e (EULER)     c  (e.cud) |\n");
   printf("\t\t| i (fibonacci) p (leibiz) |\n");
-  printf("\t\t| v (pe,ar,vol)            |\n");
+  printf("\t\t| v (pe,ar,vol) a (suma 10)|\n");
   printf("\t\t****************************\n");
   printf("¿Que tipo de operación quieres hacer?\n ");
   scanf("%c", &c);
@@ -281,6 +281,8 @@ double serieLebniz(int n){
   }
   return res*4;
 }
+
+
 void circulo_esfera(double r, double *peri, double*area, double *vol){
   double pi;
   printf("Ingresa un valor: ");
