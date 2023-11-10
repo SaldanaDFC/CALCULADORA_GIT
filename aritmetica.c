@@ -15,7 +15,7 @@ int multiplicacion(int a, int b){
 //RESTA
 int resta(int a, int b){
   int r;
-  r=a*b;
+  r=a-b;
   return r;
 }
 //DIVISION

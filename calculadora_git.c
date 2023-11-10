@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 #include "ojitos.h"
+//#define n 4
 //funciones arreglos
 void leer_arreglo(int num[]);
 int sumar_arreglo(int num[]);
@@ -8,8 +9,7 @@ int sumar_arreglo(int num[]);
 void eq_cuadr(double a, double b, double c, double *r1,double *r2);
 void circulo_esfera(double r, double *peri, double*area, double *vol);
 //main
-int main (void)
-{
+int main (void){
 //Variables
   int num1,num2;
   double radio;
@@ -28,6 +28,15 @@ int main (void)
   int i,j;
 //Procesos
   while(1){
+        if(cuenta>=3){
+            for(i=0;i<3;i++){
+                printf("Operacion: %c %.2lf %.2lf %.2lf %d %d %d %d\n", historial[i].operacion, historial[i].resultado_double1, historial[i].resultado_double2, historial[i].resultado_double3, historial[i].resultado_int, historial[i].op1, historial[i].op2, historial[i].op3);
+            }
+            for(j=1;j<3;j++){
+                historial[j-1]=historial[j];
+            }
+            cuenta--;
+        }
         printf("\n\t\t***********-MENU-***********\n");
         printf("\t\t| + (SUMA )     -  (RESTA) |\n");
         printf("\t\t| * (MULTi)     /  (DIVIS) |\n");
@@ -39,11 +48,7 @@ int main (void)
         printf("\t\t****************************\n");
         printf("¿Que tipo de operación quieres hacer?\n ");
         scanf("%c", &c);
-        if(cuenta==10){
-            for(j=1;j<10;j++){
-                historial[j-1]=historial[j];
-            }
-        }
+        getchar();
         switch(c){
             case '+':{
 	            printf("\nSuma");
@@ -198,6 +203,7 @@ int main (void)
                 
             }
         }
+        getchar();
         cuenta++;
     }
 //FIN DEL PROGRAMA
