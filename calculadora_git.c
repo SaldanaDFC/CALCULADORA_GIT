@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 #include "ojitos.h"
-//#define n 4
+
 //funciones arreglos
 void leer_arreglo(int num[]);
 int sumar_arreglo(int num[]);
@@ -21,6 +21,7 @@ int main (void){
   double pi;
   double v1,v2,v3,res1,res2;
   int numeros_caso_a[10];
+  int datos[10];
   int res = 0;
   //
   OPERACION historial[10];
@@ -28,11 +29,11 @@ int main (void){
   int i,j;
 //Procesos
   while(1){
-        if(cuenta>=3){
+        if(cuenta>=10){
             for(i=0;i<3;i++){
                 printf("Operacion: %c %.2lf %.2lf %.2lf %d %d %d %d\n", historial[i].operacion, historial[i].resultado_double1, historial[i].resultado_double2, historial[i].resultado_double3, historial[i].resultado_int, historial[i].op1, historial[i].op2, historial[i].op3);
             }
-            for(j=1;j<3;j++){
+            for(j=1;j<10;j++){
                 historial[j-1]=historial[j];
             }
             cuenta--;
@@ -200,6 +201,11 @@ int main (void){
             }
             case 'm':{
                 //media, mediana y moda
+                printf("Ingresa 10 numeros: ");
+                for(i=0;i<10;i++){
+                    scanf("%i",datos[i]);
+                }
+                
                 
             }
         }
@@ -256,4 +262,16 @@ int sumar_arreglo(int num[])
     }
 
     return res;
+}
+int media(datos[]){
+    int suma=0;
+    int i;
+    for(i=0;i<10;i++){
+        suma=+datos[i];    
+    }
+    return suma;
+}
+int mediana(datos[]){
+}
+int moda(){
 }
