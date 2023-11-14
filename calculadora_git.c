@@ -263,15 +263,15 @@ int sumar_arreglo(int num[])
 
     return res;
 }
-int media(datos[]){
+float media(datos[]){
     int suma=0;
     int i;
-    int res=0;
+    float res=0;
     for(i=0;i<10;i++){
         suma=+datos[i];    
     }
     res= suma/i;
-    return suma;
+    return res;
 }
 int mediana(datos[]){
 }
